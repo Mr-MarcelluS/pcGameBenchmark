@@ -1,0 +1,461 @@
+/* --- RESET & BASICS --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #10141e; /* Dark Blue Background */
+    color: white;
+}
+
+/* --- REUSABLE CLASS --- */
+.container {
+    max-width: 1200px; /* Keeps content from stretching too wide */
+    margin: 0 auto;    /* Centers the container */
+    padding: 0 20px;
+}
+
+/* --- HEADER STYLING --- */
+.main-header {
+    background-color: #0b0e14; /* Darker header background */
+    padding: 20px 0;
+    border-bottom: 1px solid #2a3b55; /* Subtle border line */
+}
+
+/* FLEXBOX LAYOUT - This separates Logo and Menu */
+.nav-flex {
+    display: flex;
+    justify-content: space-between; /* Pushes items to edges */
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #316bf4; /* Bright Blue Logo Color */
+}
+
+/* --- NAVIGATION LINKS --- */
+.nav-links {
+    list-style: none; /* Removes bullet points */
+    display: flex;    /* Makes list items sit side-by-side */
+    gap: 25px;        /* Spacing between links */
+}
+
+.nav-links a {
+    text-decoration: none; /* Removes underline */
+    color: white;
+    font-weight: 500;
+}
+
+.nav-links a:hover {
+    color: #316bf4; /* Blue color on hover */
+}
+
+/* --- HERO SECTION --- */
+.hero {
+    text-align: center; /* Centers all text and buttons */
+    padding: 100px 0;   /* Vertical spacing */
+    
+    /* This adds a dark overlay on top of a background image */
+    background: linear-gradient(rgba(16, 20, 30, 0.8), rgba(16, 20, 30, 0.8)), 
+                url('https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+    background-size: cover;    /* Ensures image covers whole section */
+    background-position: center;
+}
+
+.hero h1 {
+    font-size: 3rem; /* Big text */
+    margin-bottom: 10px;
+}
+
+.hero p {
+    color: #aab2bd; /* Light gray text */
+    margin-bottom: 30px;
+    font-size: 1.2rem;
+}
+
+/* --- SEARCH BAR STYLING --- */
+.search-box {
+    display: flex;
+    justify-content: center; /* Centers the input and button */
+}
+
+.search-box input {
+    padding: 15px;      /* Inner spacing (see Box Model) */
+    width: 400px;       /* Width of the text area */
+    border: none;
+    border-radius: 5px 0 0 5px; /* Rounds only the left corners */
+    font-size: 1rem;
+    outline: none;      /* Removes the default blue outline on click */
+}
+
+.search-box button {
+    padding: 15px 30px;
+    background-color: #316bf4; /* Primary Blue */
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 0 5px 5px 0; /* Rounds only the right corners */
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.search-box button:hover {
+    background-color: #2558d0; /* Darker blue on hover */
+}
+
+/* --- POPULAR GAMES SECTION --- */
+.popular-games {
+    padding: 50px 0;
+}
+
+.popular-games h2 {
+    margin-bottom: 30px;
+    border-left: 5px solid #316bf4; /* Blue accent line on the left */
+    padding-left: 15px;
+}
+
+/* THE GRID SYSTEM */
+.game-grid {
+    display: grid;
+    /* This creates the magic responsive layout */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px; /* Space between cards */
+}
+
+/* --- CARD STYLING --- */
+/* --- UPDATED CARD IMAGES --- */
+.game-card img {
+    width: 100%;
+    height: 300px; /* Fixed height for consistency */
+    object-fit: cover; /* Ensures image fills the box without stretching */
+    border-radius: 5px;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+/* Update the card padding to look nicer */
+.game-card {
+    padding: 15px; /* Slightly less padding to give image more room */
+    /* Keep your existing background-color, border-radius etc. */
+}
+
+/* Hover Effect: Card floats up slightly */
+.game-card:hover {
+    transform: translateY(-5px); 
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+.image-placeholder {
+    width: 100%;
+    height: 150px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    display: flex;       /* Centers the text inside the placeholder */
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+}
+
+.game-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+
+.game-card p {
+    color: #aab2bd;
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+}
+
+/* Small Button Styling */
+.btn-small {
+    padding: 8px 20px;
+    background-color: transparent;
+    border: 1px solid #316bf4;
+    color: #316bf4;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-small:hover {
+    background-color: #316bf4;
+    color: white;
+}
+
+/* --- FOOTER --- */
+footer {
+    background-color: #0b0e14; /* Matches the header */
+    text-align: center;
+    padding: 30px 0;
+    margin-top: 50px; /* Pushes footer away from content */
+    border-top: 1px solid #2a3b55;
+    color: #aab2bd;
+    font-size: 0.9rem;
+}
+
+/* --- RESPONSIVE DESIGN (MOBILE) --- */
+@media (max-width: 768px) {
+    
+    /* 1. Stack the Logo and Menu vertically */
+    .nav-flex {
+        flex-direction: column;
+        gap: 15px;
+        padding-bottom: 10px;
+    }
+
+    /* 2. Shrink the big text slightly */
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    /* 3. Make the search bar full width and stack the button */
+    .search-box {
+        flex-direction: column; /* Stack input and button */
+        align-items: center;
+        gap: 10px;
+    }
+
+    .search-box input {
+        width: 100%; /* Full width of screen */
+        border-radius: 5px; /* Round all corners */
+    }
+
+    .search-box button {
+        width: 100%; /* Full width button */
+        border-radius: 5px; /* Round all corners */
+    }
+
+    /* Inside @media (max-width: 768px) */
+    
+    .result-card {
+        flex-direction: column; /* Stack image and text vertically */
+        text-align: center;
+    }
+
+    .result-card img {
+        width: 150px; /* Make image slightly bigger on mobile */
+        height: auto;
+    }
+}
+
+/* --- SEARCH RESULTS --- */
+.result-card {
+    background-color: #1c2232;
+    padding: 20px;
+    border-radius: 8px;
+    border: 2px solid #316bf4;
+    max-width: 500px;
+    margin: 0 auto; /* Center it */
+    text-align: left;
+    animation: fadeIn 0.5s;
+}
+
+.result-card h3 {
+    color: #316bf4;
+}
+
+.result-card button {
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #4CAF50; /* Green for "Go" */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.result-card button:hover {
+    background-color: #45a049;
+}
+
+/* Simple fade in animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- SYSTEM SCANNER DASHBOARD --- */
+.system-scanner {
+    background-color: #151a27;
+    padding: 40px 0;
+    border-bottom: 1px solid #2a3b55;
+    text-align: center;
+}
+
+.specs-form {
+    background-color: #0b0e14;
+    padding: 30px;
+    border-radius: 10px;
+    max-width: 800px;
+    margin: 20px auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    border: 1px solid #2a3b55;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    width: 200px;
+}
+
+.input-group label {
+    font-size: 0.9rem;
+    color: #aab2bd;
+    margin-bottom: 5px;
+}
+
+.input-group select {
+    padding: 10px;
+    background-color: #1c2232;
+    color: white;
+    border: 1px solid #316bf4;
+    border-radius: 5px;
+}
+
+.save-btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #316bf4;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.save-btn:hover {
+    background-color: #2558d0;
+}
+
+/* --- SEARCH AUTOCOMPLETE DROPDOWN --- */
+
+/* This wrapper allows us to position the dropdown relative to the input */
+.input-wrapper {
+    position: relative;
+    width: 400px; /* Matches the width of the input */
+}
+
+/* Fix the input width to fill the wrapper */
+.search-box input {
+    width: 100%; 
+    border-radius: 5px 0 0 5px; /* Keep the left corners round */
+}
+
+/* The actual dropdown box */
+.suggestions-box {
+    position: absolute; /* Floats on top of other content */
+    top: 100%;          /* Pushes it directly below the input */
+    left: 0;
+    width: 100%;
+    background-color: #1c2232;
+    border: 1px solid #2a3b55;
+    border-top: none;
+    border-radius: 0 0 5px 5px;
+    z-index: 1000;      /* Ensures it sits on top of images/text */
+    display: none;      /* Hidden by default */
+    max-height: 200px;  /* If list is long, it scrolls */
+    overflow-y: auto;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+}
+
+/* Individual list items */
+.suggestion-item {
+    padding: 10px;
+    cursor: pointer;
+    border-bottom: 1px solid #2a3b55;
+    color: #fff;
+    text-align: left;
+    
+    /* NEW: Aligns image and text side-by-side */
+    display: flex;
+    align-items: center;
+    gap: 15px; 
+}
+
+.suggestion-item img {
+    width: 40px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.suggestion-item:last-child {
+    border-bottom: none;
+}
+
+.suggestion-item:hover {
+    background-color: #316bf4; /* Blue highlight on hover */
+}
+
+/* ADJUSTMENT FOR MOBILE */
+@media (max-width: 768px) {
+    .input-wrapper {
+        width: 100%;
+    }
+}
+
+/* --- ANALYSIS REPORT STYLING --- */
+.analysis-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.check-item {
+    padding: 10px;
+    border-bottom: 1px solid #2a3b55;
+    font-size: 0.9rem;
+}
+
+.check-item:last-child {
+    border-bottom: none;
+}
+
+/* Header row (Name + Badge) */
+.check-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+/* Paragraph explanation */
+.check-item p {
+    margin: 0;
+    color: #aab2bd;
+    font-size: 0.85rem;
+}
+
+/* BADGES (The pill-shaped status indicators) */
+.badge {
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.pass-badge {
+    background-color: rgba(76, 175, 80, 0.2); /* Transparent Green */
+    color: #4CAF50;
+    border: 1px solid #4CAF50;
+}
+
+.fail-badge {
+    background-color: rgba(244, 67, 54, 0.2); /* Transparent Red */
+    color: #f44336;
+    border: 1px solid #f44336;
+}
