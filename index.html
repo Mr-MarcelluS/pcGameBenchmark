@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PCGameBenchmark Replica</title>
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="container nav-flex">
+            <div class="logo">PCGameBenchmark</div>
+            
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li id="navAuth"><a href="login.html" style="color: #316bf4; font-weight: bold;">Login / Register</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="system-scanner" id="test">
+            <div class="container">
+                <h2><span style="color: #316bf4;">Step 1:</span> Your PC Specs</h2>
+                
+                <div id="loggedInSection" style="display: none; background-color: #0b0e14; padding: 30px; border-radius: 10px; max-width: 800px; margin: 20px auto; border: 1px solid #316bf4;">
+                    <h3 id="welcomeUser" style="color: #316bf4; margin-bottom: 10px;">Welcome Back!</h3>
+                    <div id="savedSpecsDisplay" style="color: #aab2bd; font-size: 1.1rem; line-height: 1.6;">
+                        Loading your saved specs...
+                    </div>
+                    <button class="btn-small" onclick="editSpecs()" style="margin-top: 20px;">Edit My Specs</button>
+                </div>
+
+                <div id="guestSection">
+                    <div class="specs-form">
+                        <div class="input-group" style="width: 100%; max-width: 600px;">
+                            <label>Processor (CPU)</label>
+                            <div style="display: flex; gap: 10px;">
+                                <select id="cpuBrand" onchange="updateCpuGens()" style="flex: 1;"><option value="0">-- Brand --</option></select>
+                                <select id="cpuGen" onchange="updateCpuModels()" style="flex: 1;" disabled><option value="0">-- Series/Gen --</option></select>
+                                <select id="cpuModel" style="flex: 1;" disabled><option value="0">-- Model --</option></select>
+                            </div>
+                        </div>
+
+                        <div class="input-group" style="width: 100%; max-width: 600px;">
+                            <label>Graphics Card (GPU)</label>
+                            <div style="display: flex; gap: 10px;">
+                                <select id="gpuBrand" onchange="updateGpuGens()" style="flex: 1;"><option value="0">-- Brand --</option></select>
+                                <select id="gpuGen" onchange="updateGpuModels()" style="flex: 1;" disabled><option value="0">-- Series/Gen --</option></select>
+                                <select id="gpuModel" style="flex: 1;" disabled><option value="0">-- Model --</option></select>
+                            </div>
+                        </div>
+
+                        <div class="input-group">
+                            <label>Memory (RAM)</label>
+                            <select id="ramSelect">
+                                <option value="0">-- Select RAM --</option>
+                                <option value="4">4 GB</option>
+                                <option value="8">8 GB</option>
+                                <option value="12">12 GB</option>
+                                <option value="16">16 GB</option>
+                                <option value="32">32 GB</option>
+                                <option value="64">64 GB</option>
+                            </select>
+                        </div>
+
+                        <button class="save-btn" onclick="saveSystemSpecs()">Save Specs</button>
+                        <p id="saveMessage" style="color: #4CAF50; margin-top: 10px; display: none;">Specs Saved! Now search for a game below.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        <section class="hero">
+            <div class="container">
+                <h1>Can I Run It?</h1>
+                <p>Test your PC against over 8,000 games and find the best upgrade.</p>
+                
+                <div class="search-box">
+                    
+                    <div class="input-wrapper">
+                        <input type="text" id="searchInput" placeholder="Search for a game (e.g. GTA V)..." autocomplete="off" onkeyup="showSuggestions()">
+                        
+                        <div id="suggestionsList" class="suggestions-box"></div>
+                    </div>
+
+                    <button onclick="searchGame()">Check Specs</button>
+                </div>
+
+                <div id="resultArea" style="margin-top: 20px; display: none;"></div>
+            </div>
+        </section>
+        <section class="popular-games">
+            <div class="container">
+                <h2>Popular Games</h2>
+                
+                <div class="game-grid">
+                    <div class="game-card">
+                        <img src="images\gtav.jpg" alt="GTA V">
+                        <h3>Grand Theft Auto V</h3>
+                        <p>Rockstar Games</p>
+                        <button class="btn-small" onclick="checkGame('Grand Theft Auto V')">View Specs</button>
+                    </div>
+
+                    <div class="game-card">
+                        <img src="images\minecraft.jpg" alt="Minecraft">
+                        <h3>Minecraft</h3>
+                        <p>Mojang</p>
+                        <button class="btn-small" onclick="checkGame('Minecraft')">View Specs</button>
+                    </div>
+
+                    <div class="game-card">
+                        <img src="images\valorant.jpg" alt="Valorant">
+                        <h3>Valorant</h3>
+                        <p>Riot Games</p>
+                        <button class="btn-small" onclick="checkGame('Valorant')">View Specs</button>
+                    </div>
+
+                     <div class="game-card">
+                        <img src="images\cyberpunk.jpg" alt="Cyberpunk">
+                        <h3>Cyberpunk 2077</h3>
+                        <p>CD Projekt Red</p>
+                        <button class="btn-small" onclick="checkGame('Cyberpunk 2077')">View Specs</button>
+                    </div>
+                </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 PCGameBenchmark. Created by Kanishka S (1dt24cg017), Haneesh Raj A N (1dt24cg016), Gunde Niharika (1dt24cg015).</p>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

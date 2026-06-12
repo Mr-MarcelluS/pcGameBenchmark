@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - PCGameBenchmark</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Specific styles for the auth container */
+        .auth-container {
+            max-width: 400px;
+            margin: 80px auto;
+            background-color: #1c2232;
+            padding: 40px;
+            border-radius: 8px;
+            border: 1px solid #2a3b55;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            text-align: center;
+        }
+        .auth-container h2 { color: #316bf4; margin-bottom: 20px; }
+        .auth-input {
+            width: 100%; padding: 15px; margin-bottom: 15px;
+            background-color: #0b0e14; border: 1px solid #2a3b55;
+            color: white; border-radius: 5px;
+        }
+        .auth-btn {
+            width: 100%; padding: 15px; background-color: #316bf4;
+            color: white; border: none; border-radius: 5px;
+            font-weight: bold; cursor: pointer; font-size: 1rem;
+        }
+        .auth-btn:hover { background-color: #2558d0; }
+        .toggle-link {
+            color: #aab2bd; margin-top: 15px; cursor: pointer;
+            font-size: 0.9rem; display: block;
+        }
+        .toggle-link:hover { color: white; text-decoration: underline; }
+        #errorMsg { color: #f44336; margin-bottom: 15px; font-size: 0.9rem; display: none; }
+        #successMsg { color: #4CAF50; margin-bottom: 15px; font-size: 0.9rem; display: none; }
+    </style>
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="container nav-flex">
+            <div class="logo">PCGameBenchmark</div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="container">
+            <div class="auth-container" id="loginBox">
+                <h2>Login</h2>
+                <p id="errorMsg"></p>
+                <p id="successMsg"></p>
+                
+                <form id="loginForm" onsubmit="handleLogin(event)">
+                    <input type="email" id="loginEmail" class="auth-input" placeholder="Email Address" required>
+                    <input type="password" id="loginPassword" class="auth-input" placeholder="Password" required>
+                    <button type="submit" class="auth-btn">Sign In</button>
+                </form>
+
+                <form id="registerForm" onsubmit="handleRegister(event)" style="display: none;">
+                    <input type="text" id="regUsername" class="auth-input" placeholder="Username" required>
+                    <input type="email" id="regEmail" class="auth-input" placeholder="Email Address" required>
+                    <input type="password" id="regPassword" class="auth-input" placeholder="Password" required>
+                    <button type="submit" class="auth-btn">Create Account</button>
+                </form>
+
+                <a class="toggle-link" onclick="toggleAuthMode()" id="toggleText">Need an account? Register here.</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 PCGameBenchmark. Created by Kanishka S (1dt24cg017), Haneesh Raj A N (1dt24cg016), Gunde Niharika (1dt24cg015).</p>
+        </div>
+    </footer>
+
+    <script src="auth.js"></script>
+</body>
+</html>
